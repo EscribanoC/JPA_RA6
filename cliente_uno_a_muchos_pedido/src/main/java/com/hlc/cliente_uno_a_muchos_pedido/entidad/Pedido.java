@@ -1,6 +1,7 @@
 package com.hlc.cliente_uno_a_muchos_pedido.entidad;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -9,6 +10,8 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
@@ -37,6 +40,12 @@ public class Pedido {
 	@JoinColumn(name = "cliente_id", nullable = false)
 	@ManyToOne
 	private Cliente cliente;
+	
+	@ManyToMany
+	@JoinTable(
+			name= "producto_id"
+			JoinColumn="")
+	private List<Producto> productos;
 	
     public Pedido() {}
 
